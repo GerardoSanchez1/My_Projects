@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Fe-C Phase Diagram</title>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.32.0.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header>
+            <div class="title-section">
+                <h1>Fe-C Phase Diagram</h1>
+                <p>Interactive Iron-Carbon Equilibrium Diagram</p>
+            </div>
+        </header>
+
+        <main class="chart-container">
+            <div id="plotly-div"></div>
+        </main>
+
+        <div class="coord-display">
+            <div class="coord-box">
+                <span class="coord-label">Carbon</span>
+                <div class="coord-val-wrap">
+                    <span class="coord-value" id="x-coord">---</span> <span class="coord-unit">Pct C</span>
+                </div>
+            </div>
+            <div class="coord-box">
+                <span class="coord-label">Temperature</span>
+                <div class="coord-val-wrap">
+                    <span class="coord-value" id="y-coord">---</span> <span class="coord-unit">°C</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <p>💡 <strong>Tip:</strong> Click and drag to zoom into specific regions. Double-click to reset zoom. Hover
+                over lines for exact phase boundaries.</p>
+        </div>
+
+        <hr>
+
+        <div class="calc-panel">
+            <h2>Calculate composition</h2>
+
+            <div class="inputs-row">
+                <!-- %C -->
+                <div class="input-group">
+                    <label>% Carbon</label>
+                    <div class="input-controls">
+                        <button type="button" onclick="document.getElementById('pct').stepDown()">−</button>
+                        <input id="pct" type="number" value="0" step="0.01">
+                        <button type="button" onclick="document.getElementById('pct').stepUp()">+</button>
+                    </div>
+                </div>
+
+                <!-- Temperature -->
+                <div class="input-group">
+                    <label>Temperature (°C)</label>
+                    <div class="input-controls">
+                        <button type="button" onclick="document.getElementById('temp').stepDown()">−</button>
+                        <input id="temp" type="number" value="0" step="1">
+                        <button type="button" onclick="document.getElementById('temp').stepUp()">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <button class="calc-btn" type="submit">Calculate</button>
+
+            <div class="instructions">
+                <p id="response"></p>
+            </div>
+            <br>
+            <hr>
+        </div>
+
+        <footer>
+            <h3>Information obtained from:</h3>
+            <ul>
+                <li>
+                    <a href="https://doi.org/10.1007/BF02680585" target="_blank" rel="noopener noreferrer">
+                        [1] Chipman, J. Thermodynamics and phase diagram of
+                        the Fe-C system. Metall Trans 3, 55–64 (1972).</a>
+                </li>
+                <li>
+                    <a href=" https://fractory.com/iron-carbon-phase-diagram/" target="_blank"
+                        rel="noopener noreferrer">[2] Fractory, "Iron-Carbon Phase Diagram:
+                        Explained," Fractory. [Online].</a>
+                </li>
+                <li>
+                    <a href="https://www.ispatguru.com/the-iron-carbon-phase-diagram/" target="_blank"
+                        rel="noopener noreferrer">[3] IspatGuru, "The Iron-Carbon
+                        Phase Diagram," IspatGuru.</a>
+                </li>
+                <li>
+                    <a href="https://www.researchgate.net/publication/320531737_Vacuum_Carburizing_Steel_Alloys_Containing_Strong_Carbide_Formers"
+                        target="_blank" rel="noopener noreferrer">
+                        [4] L. Ferguson, Z. Li, J. Sims, T. Yu, Vacuum Carburizing
+                        Steel Alloys Containing StrongCarbide Formers, Heat Treat 2017: Proceedings from the 29th Heat
+                        Treating Society Conferenceand Exposition, Columbus, Ohio, USA, 2017. </a>
+                </li>
+            </ul>
+            <br>
+            <h3 style="text-align: center">For further inprovements or suggestions, contact:</h3>
+            <div id="footer-email-container" style="text-align: center">
+            </div>
+        </footer>
+
+        <!-- JavaScript-->
+        <script src="script.js"></script>
+    </div>
+</body>
+
+</html>
